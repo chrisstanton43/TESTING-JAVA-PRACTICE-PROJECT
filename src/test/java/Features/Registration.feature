@@ -30,9 +30,8 @@ Feature: Customer Registration to mandmdriect
     When I click on Myaccount link
     Then I should be on "Sign In" page
     When I enter my email address
-#    And I Continued As existing customer
     And I enter the Password "as543539"
     And I click on "Continue" button
     Then I should see "Welcome to My MandM" page
     When I click on "Continue Shopping"
-    Then I should be on "Panel Navigation"
+    Then I should be on Panel Navigation page

@@ -72,6 +72,7 @@ public class RegistrationStepDefs {
 
     @When("^I enter the Password as \"(.*?)\"$")
     public void i_enter_the_Password_as(String Password) throws Throwable {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.findElement(By.xpath(".//*[@id='SignUpDetails_Password']")).sendKeys(Password);
     }
 
@@ -103,6 +104,30 @@ public class RegistrationStepDefs {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         //driver.findElement(By.xpath(".//*[@id='LowerContinue']/input")).isEnabled();
         driver.findElement(By.xpath(".//*[@id='LowerContinue']/input")).click();
+    }
+
+    @When("^I enter the Password \"(.*?)\"$")
+    public void i_enter_the_Password(String Password) throws Throwable {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.findElement(By.xpath(".//*[@id='Password']")).sendKeys(Password);
+    }
+    @Then("^I should see the \"(.*?)\" page$")
+    public void i_should_see_the_page(String text) throws Throwable {
+        driver.findElement(By.xpath(".//*[@id='SignInContinue']/input")).sendKeys(text);
+    }
+
+
+    @Then("^I should see \"(.*?)\" page$")
+    public void i_should_see_page(String text) throws Throwable {
+        assert( driver.findElement(By.xpath("html/body/div[2]/div/h1")).getText().contains(text));
+    }
+    @When("^I click on \"(.*?)\"$")
+    public void i_click_on(String arg1) throws Throwable {
+        driver.findElement(By.xpath(".//*[@id='rightMandMContainer']/div[4]/input")).click();
+    }
+    @Then("^I should be on Panel Navigation page$")
+    public void i_should_be_on_Panel_Navigation_page() throws Throwable {
+        driver.findElement(By.xpath(".//*[@id='pnlNavigation']"));
     }
 
 }
